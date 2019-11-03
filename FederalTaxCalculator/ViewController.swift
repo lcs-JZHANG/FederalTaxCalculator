@@ -10,11 +10,63 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var name: UITextField!
+    
+    @IBOutlet weak var income: UITextField!
+    
+    @IBOutlet weak var taxOwing: UILabel!
+    
+    @IBOutlet weak var taxRate: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
 
+    func calculate() {
+        guard let yourName = name.text else {
+            taxOwing.text = "Please Enter Your Name"
+            return
+        }
+        
+        guard let yourIncome = income.text else {
+            taxOwing.text = "Please Enter Your Income"
+            return
+            
+        guard let yourIncomeAsDouble = Double(yourIncome) else {
+            taxOwing.text = "Please Enter Your Income"
+            return
+            
+            
+        }
+        func roundingNumber (number: Double){
+        let numberAsIntTimes100 = Int(number * 100)
+        let numberAsDoubleTimes100 = Double(numberAsIntTimes100)
+        let numberAsDouble = numberAsDoubleTimes100/100
+            
+        switch yourIncomeAsDouble {
+            case 0...47630:
+            let owing = roundingNumber(number: yourIncomeAsDouble)
+            let rateOfTax = roundingNumber(number: yourIncomeAsDouble)
+            taxOwing.text = "\(yourName), the federal tax owing is \(owing)"
+        
+        }
+    
+    }
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
