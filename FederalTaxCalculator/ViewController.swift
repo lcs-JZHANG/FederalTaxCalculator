@@ -47,11 +47,29 @@ class ViewController: UIViewController {
         let numberAsDouble = numberAsDoubleTimes100/100
             
         switch yourIncomeAsDouble {
+            
             case 0...47630:
             let owing = roundingNumber(number: yourIncomeAsDouble)
             let rateOfTax = roundingNumber(number: yourIncomeAsDouble)
             taxOwing.text = "\(yourName), the federal tax owing is \(owing)"
         
+            case 47631...95259:
+            let owing = roundingNumber(number: yourIncomeAsDouble)
+            let rateOfTax = roundingNumber(number: yourIncomeAsDouble)
+            taxOwing.text = "\(yourName), the federal tax owing is \(owing)"
+            
+            case 95260...147667:
+            let owing = roundingNumber(number: yourIncomeAsDouble)
+            let rateOfTax = roundingNumber(number: yourIncomeAsDouble)
+            taxOwing.text = "\(yourName), the federal tax owing is \(owing)"
+            
+            case 147668...210371:
+            let owing = roundingNumber(number: yourIncomeAsDouble)
+            let rateOfTax = roundingNumber(number: yourIncomeAsDouble)
+            taxOwing.text = "\(yourName), the federal tax owing is \(owing)"
+            
+        default:
+            taxOwing.text = "Please Enter the right Number"
         }
     
     }
@@ -70,3 +88,4 @@ class ViewController: UIViewController {
     
 }
 
+}
