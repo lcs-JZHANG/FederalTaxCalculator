@@ -39,6 +39,10 @@ class ViewController: UIViewController {
             taxOwing.text = "Please Enter Your Income"
             return
             
+        guard let yourNameAsDouble = Double(yourName) else {
+            taxOwing.text = "Please Enter Your Name"
+            return
+            
             
         }
         func roundingNumber (number: Double){
