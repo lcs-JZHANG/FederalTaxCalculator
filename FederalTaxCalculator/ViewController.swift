@@ -34,14 +34,12 @@ class ViewController: UIViewController {
         guard let yourIncome = income.text else {
             taxOwing.text = "Please Enter Your Income"
             return
-            
+        }
+        
         guard let yourIncomeAsDouble = Double(yourIncome) else {
             taxOwing.text = "Please Enter Your Income"
             return
             
-        guard let yourNameAsDouble = Double(yourName) else {
-            taxOwing.text = "Please Enter Your Name"
-            return
             
             
         }
@@ -49,28 +47,40 @@ class ViewController: UIViewController {
         let numberAsIntTimes100 = Int(number * 100)
         let numberAsDoubleTimes100 = Double(numberAsIntTimes100)
         let numberAsDouble = numberAsDoubleTimes100/100
+            taxOwing.text = String(numberAsDouble)
+        }
             
         switch yourIncomeAsDouble {
             
             case 0...47630:
-            let owing = roundingNumber(number: yourIncomeAsDouble)
-            let rateOfTax = roundingNumber(number: yourIncomeAsDouble)
+            let owing = yourIncomeAsDouble * 0.15
+            let rateOfTax = owing/yourIncomeAsDouble
             taxOwing.text = "\(yourName), the federal tax owing is \(owing)"
+            taxRate.text = "\(yourName), the federal tax rateis \(rateOfTax)"
         
             case 47631...95259:
-            let owing = roundingNumber(number: yourIncomeAsDouble)
-            let rateOfTax = roundingNumber(number: yourIncomeAsDouble)
+            let owing = (yourIncomeAsDouble - 47630) * 0.205 + 47630 * 0.15
+            let rateOfTax = owing/yourIncomeAsDouble
             taxOwing.text = "\(yourName), the federal tax owing is \(owing)"
+            taxRate.text = "\(yourName), the federal tax rateis \(rateOfTax)"
             
             case 95260...147667:
-            let owing = roundingNumber(number: yourIncomeAsDouble)
-            let rateOfTax = roundingNumber(number: yourIncomeAsDouble)
+                let owing = (yourIncomeAsDouble - 95260) * 0.26 + (95259 - 47631) * 0.205 + 47630 * 0.15
+            let rateOfTax = owing/yourIncomeAsDouble
             taxOwing.text = "\(yourName), the federal tax owing is \(owing)"
+            taxRate.text = "\(yourName), the federal tax rateis \(rateOfTax)"
             
             case 147668...210371:
-            let owing = roundingNumber(number: yourIncomeAsDouble)
-            let rateOfTax = roundingNumber(number: yourIncomeAsDouble)
+            let owing = (yourIncomeAsDouble - 147668) * 0.29 + (147667 - 95260) * 0.26 + (95259 - 47631) * 0.205 + 47630 * 0.15
+            let rateOfTax = owing/yourIncomeAsDouble
             taxOwing.text = "\(yourName), the federal tax owing is \(owing)"
+            taxRate.text = "\(yourName), the federal tax rateis \(rateOfTax)"
+            
+        case 210371...:
+                let owing = (yourIncomeAsDouble - 210371) * 0.33 + (210371 - 147668) * 0.29 + (147667 - 95260) * 0.26 + (95259 - 47631) * 0.205 + 47630 * 0.15
+            let rateOfTax = owing/yourIncomeAsDouble
+            taxOwing.text = "\(yourName), the federal tax owing is \(owing)"
+            taxRate.text = "\(yourName), the federal tax rateis \(rateOfTax)"
             
         default:
             taxOwing.text = "Please Enter the right Number"
@@ -78,6 +88,9 @@ class ViewController: UIViewController {
     
     }
     
+    @IBAction func Calculate(_ sender: Any) {
+        calculate()
+    }
     
     }
     
@@ -90,6 +103,5 @@ class ViewController: UIViewController {
     
     
     
-}
 
-}
+
